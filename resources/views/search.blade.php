@@ -40,6 +40,15 @@
     not found
     @endif
     </div>
+    <form method="GET" action="/search" class="d-flex justify-center py-2">
+        <div class="input-group mb-3">
+            <input type="hidden" name="movieName" id="movieName" value = {{$movieName}}>
+            <input type="hidden" id="page" name="page" value="{{$page+1}}">
+            <div class="pt-4">
+                <button class="btn btn-primary" type="submit">Load More</button>
+            </div>
+        </div>
+    </form>
 </div>
 </div>
 </section>

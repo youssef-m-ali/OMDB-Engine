@@ -15,6 +15,7 @@
             <label>Enter your favourite movie's name below</label>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="movieName" id="movieName" placeholder="Movie Name">
+                <input type="hidden" id="page" name="page" value="1">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="submit">Search OMDB</button>
                     </div>

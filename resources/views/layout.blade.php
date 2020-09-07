@@ -21,8 +21,8 @@
                         My List
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/wifis">Manage Wifi Accounts</a>
-                        <a class="dropdown-item" href="/projects">Manage Projects</a>
+                        <a class="dropdown-item" href="/">M</a>
+                        <a class="dropdown-item" href="/">Man</a>
                         
                     </div>
                     </div>
