@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class MovieController extends Controller
 {
     public function index(){
-        $movies = Movie::get();
+        $user_id = 1; // instead of implementing a log in and a foreign key relation
+        $movies = Movie::where('user_id', $user_id)->get();
+        
         foreach($movies as $movie){
             $movie->omdbData = json_decode($movie->omdbData);
         }
@@ -31,6 +33,7 @@ class MovieController extends Controller
 
         $movie = New Movie;
         $movie->omdbData = $data;
+        $movie->imdbId = $id;
         $movie->save();
 
         return redirect('/movies');
@@ -38,6 +41,9 @@ class MovieController extends Controller
     }
     
     public function delete($id){
-        
+        $movie = Movie::where('imdbId', $id)->first();
+        $movie->delete();
+
+        return redirect('/movies');
     }
 }
