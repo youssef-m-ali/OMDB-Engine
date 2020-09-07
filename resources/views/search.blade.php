@@ -15,9 +15,16 @@
                 </div>
         </div>
     </form>
+    @if( $nominated == 5 )
+    <div class="container text-center">
+        <p class="alert alert-success ">
+            You have already selected 5 Movies!
+        </p>
+    </div>
+    @endif
 
-    <div class="row">
     @if($movies)
+        <div class="row">
         @foreach($movies as $movie)
             <div class="col-md-6 col-lg-3 py-2">
                 <div class="card">
@@ -27,37 +34,37 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 @if($movie->selected)
-                                <button class="btn btn-sm btn-outline-secondary">Nominated</button>
+                                <small class="text-muted">Nominated</small>
                                 @else
                                 <a type="button" href="/movies/{{$movie->imdbID}}" class="btn btn-sm btn-outline-success">Nominate</a>                                
                                 @endif
                             </div>
-                        <small class="text-muted"></small>
                         </div>
                     </div>
                 </div>
             </div>
-            
         @endforeach
+        </div>
+
+        @if(!$endOfResults)
+            <form method="GET" action="/search" class="d-flex justify-center py-2">
+                <div class="input-group mb-3">
+                    <input type="hidden" name="movieName" id="movieName" value = {{$movieName}}>
+                    <input type="hidden" id="page" name="page" value="{{$page+1}}">
+                    <div class="pt-4">
+                        <button class="btn btn-primary" type="submit">Load More</button>
+                    </div>
+                </div>
+            </form>
+        @else
+        <div class="container">
+        You have reached the end of the search results
+        </div>
+        @endif
     @else
     not found
     @endif
-    </div>
-    @if(!$endOfResults)
-    <form method="GET" action="/search" class="d-flex justify-center py-2">
-        <div class="input-group mb-3">
-            <input type="hidden" name="movieName" id="movieName" value = {{$movieName}}>
-            <input type="hidden" id="page" name="page" value="{{$page+1}}">
-            <div class="pt-4">
-                <button class="btn btn-primary" type="submit">Load More</button>
-            </div>
-        </div>
-    </form>
-    @else
-    <div class="container">
-    You have reached the end of the search results
-    </div>
-    @endif
+    
 </div>
 </div>
 </section>

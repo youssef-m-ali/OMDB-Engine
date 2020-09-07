@@ -15,16 +15,8 @@
             <nav class="navbar navbar-dark bg-info py-3">
             <a class="navbar-brand px-3" href="/"> EngineOMDb</a>
                 <div class="float-right navbar ">
-                    <a class="navbar-brand px-3" href="/lists">View lists</a>
-                    <div class="dropdown">
-                    <button class="btn navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        My List
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/">M</a>
-                        <a class="dropdown-item" href="/">Man</a>
-                        
-                    </div>
+                    <a class="navbar-brand px-3" href="/nominations">View Nominations</a>
+                    <a class="navbar-brand px-3" href="/movies">My movies</a>
                     </div>
                 </div>
             </nav>

@@ -16,6 +16,10 @@ class OmdbController extends Controller
         $allMovies = '';
         $endOfResults = false;
 
+        $user_id = 1;
+        $nominated = sizeof(Movie::where('user_id', $user_id)->get());
+
+
         for ($p = 1; $p<=$request->page; $p++){
             $url = 'http://www.omdbapi.com/?apikey=5bbe12ef&type=movie&page=' . $p . '&s=' . $formatted;
            
@@ -51,7 +55,8 @@ class OmdbController extends Controller
             'movies' => $allMovies,
             'movieName' => $request->movieName,
             'page'=> $request->page,
-            'endOfResults'=> $endOfResults
+            'endOfResults'=> $endOfResults,
+            'nominated'=> $nominated
         ]);
     }
 }
