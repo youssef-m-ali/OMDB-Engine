@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Movie Lists</title>
+    </head>
+
+    <body class="bg-light">
+        <header>
+            <nav class="navbar navbar-dark bg-info py-3">
+            <a class="navbar-brand px-3" href="/"> EngineOMDb</a>
+                <div class="float-right navbar ">
+                    <a class="navbar-brand px-3" href="/lists">View lists</a>
+                    <div class="dropdown">
+                    <button class="btn navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My List
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/wifis">Manage Wifi Accounts</a>
+                        <a class="dropdown-item" href="/projects">Manage Projects</a>
+                        
+                    </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main role="main">
+            @yield('content')
+        </main>
+        <footer class="footer text-muted bg-dark py-5">
+            <div class="container">
+                <p class="text-white px-5">Youssef Ali 2020. All Rights Reserved</p>
+                <small class="text-white px-5">Developed With Love For Shopify</small>
+            </div>
+        </footer>
+    </body>
+</html>
