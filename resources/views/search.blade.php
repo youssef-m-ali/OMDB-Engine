@@ -26,7 +26,11 @@
                     <p>{{$movie->Title}} ({{$movie->Year}})</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a type="button" href="/nominate/{{$movie->imdbID}}" class="btn btn-sm btn-outline-success">Nominate</a>
+                                @if($movie->selected)
+                                <button class="btn btn-sm btn-outline-secondary">Nominated</button>
+                                @else
+                                <a type="button" href="/movies/{{$movie->imdbID}}" class="btn btn-sm btn-outline-success">Nominate</a>                                
+                                @endif
                             </div>
                         <small class="text-muted"></small>
                         </div>
@@ -39,6 +43,7 @@
     not found
     @endif
     </div>
+    @if(!$endOfResults)
     <form method="GET" action="/search" class="d-flex justify-center py-2">
         <div class="input-group mb-3">
             <input type="hidden" name="movieName" id="movieName" value = {{$movieName}}>
@@ -48,6 +53,11 @@
             </div>
         </div>
     </form>
+    @else
+    <div class="container">
+    You have reached the end of the search results
+    </div>
+    @endif
 </div>
 </div>
 </section>

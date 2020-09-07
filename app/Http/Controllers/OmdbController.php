@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Movie;
 use Illuminate\Http\Request;
 
 class OmdbController extends Controller
@@ -13,6 +14,7 @@ class OmdbController extends Controller
         
         $formatted = str_replace(' ', '+', $request->movieName);
         $allMovies = '';
+        $endOfResults = false;
 
         for ($p = 1; $p<=$request->page; $p++){
             $url = 'http://www.omdbapi.com/?apikey=5bbe12ef&type=movie&page=' . $p . '&s=' . $formatted;
@@ -23,18 +25,33 @@ class OmdbController extends Controller
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             $data = curl_exec($ch);
             curl_close($ch);
-            $movies = json_decode($data)->Search;
-           
-            if ($allMovies){
-                $allMovies = array_merge($allMovies, $movies);
+            $data = json_decode($data);
+            if ($data->Response != "False"){
+                $movies = $data->Search;
+                foreach ($movies as $movie){
+                    $q = Movie::where('imdbId', $movie->imdbID)->get();
+
+                    if(sizeof($q)){
+                        $movie->selected = true;
+                    } else {
+                        $movie->selected = false;
+                    }
+                }
+
+                if ($allMovies){
+                    $allMovies = array_merge($allMovies, $movies);
+                } else {
+                    $allMovies = $movies;
+                }
             } else {
-                $allMovies = $movies;
+                $endOfResults = true; //differentiate end from no movies
             }
         }
         return view('search', [
             'movies' => $allMovies,
             'movieName' => $request->movieName,
-            'page'=> $request->page
+            'page'=> $request->page,
+            'endOfResults'=> $endOfResults
         ]);
     }
 }
