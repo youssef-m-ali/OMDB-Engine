@@ -17,17 +17,16 @@
     </form>
 
     <div class="row">
-    @if($movies)    
+    @if($movies)
         @foreach($movies as $movie)
             <div class="col-md-6 col-lg-3 py-2">
                 <div class="card">
-                    <img src={{$movie->Poster}} class="card-img-top img-fluid"/>
+                    <img src={{$movie->Poster}} onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
                     <p>{{$movie->Title}} ({{$movie->Year}})</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a type="button" href="/" class="btn btn-sm btn-outline-info">View</a>
-                                <a role="button" href="/" class="btn btn-sm btn-outline-info">Edit</a>
+                                <a type="button" href="/nominate/{{$movie->imdbID}}" class="btn btn-sm btn-outline-success">Nominate</a>
                             </div>
                         <small class="text-muted"></small>
                         </div>
