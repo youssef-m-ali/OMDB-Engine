@@ -18,7 +18,7 @@
     @if( $nominated >= 5 )
     <div class="container text-center">
         <p class="alert alert-success ">
-            You have already selected 5 Movies!
+            You have already selected 5 Movies! Go To <a href="/movies" class="alert-link">My movies</a> to save your nomination list
         </p>
     </div>
     @endif
