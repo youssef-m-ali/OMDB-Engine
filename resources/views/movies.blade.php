@@ -5,21 +5,32 @@
 <div class="album bg-light">
 <div class="container justify-content-center">
     <div class="container pb-4">
-        <h1 class="jumbotron-heading display-4 ">Your favorite movies</h1>
+        <h1 class="jumbotron-heading display-4 ">Your favourite movies</h1>
         <p class="h2 lead text-muted">
             Below are the movies you nominated. <br>
-            You can choose to save your favorite list when it reaches 5 movies.
+            You can choose to save your favourite list when it reaches 5 movies.
         </p>
     </div>
+
+    @if(session()->has('error-message'))
+        <div class="container text-center">
+            <p class="alert alert-danger">
+            {{session()->get('error-message')}}
+            </p>
+            
+        </div>
+    @endif
 
 @if(sizeof($movies))
 
     @if(sizeof($movies)==5)
-        <div class="container text-center">
+        <div class="container text-center pb-3">
             <p class="alert alert-success ">
                 You have selected 5 Movies. Time to share!
             </p>
+            <a class="btn btn-success px-3" href="/nominations/add">Save List</a>
         </div>
+
     @elseif(sizeof($movies)>5)
         <div class="container text-center">
             <p class="alert alert-danger">
@@ -33,7 +44,7 @@
                 <div class="card">
                     <img src="{{$movie->omdbData->Poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
-                        <p>{{$movie->omdbData->Title}} ({{$movie->omdbData->Year}})</p>
+                        <p>{{$movie->omdbData->Title}} - {{$movie->omdbData->Year}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <form method="POST" action="/movies/{{$movie->omdbData->imdbID}}">
                                 @csrf
