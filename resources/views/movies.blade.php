@@ -38,7 +38,9 @@
         </div>
     @endif
     <div class="container py-3">
+    @if(sizeof($movies)==5)
     <a class="btn btn-success px-3" href="/nominations/add">Save List</a>
+    @endif
     <a class="btn btn-secondary px-3" href="/movies/reset">Reset Selection</a>
     </div>
 
