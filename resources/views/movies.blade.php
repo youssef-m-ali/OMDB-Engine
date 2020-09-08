@@ -24,11 +24,10 @@
 @if(sizeof($movies))
 
     @if(sizeof($movies)==5)
-        <div class="container text-center pb-3">
+        <div class="container text-center">
             <p class="alert alert-success ">
                 You have selected 5 Movies. Time to share!
             </p>
-            <a class="btn btn-success px-3" href="/nominations/add">Save List</a>
         </div>
 
     @elseif(sizeof($movies)>5)
@@ -38,6 +37,10 @@
             </p>
         </div>
     @endif
+    <div class="container py-3">
+    <a class="btn btn-success px-3" href="/nominations/add">Save List</a>
+    <a class="btn btn-secondary px-3" href="/movies/reset">Reset Selection</a>
+    </div>
 
     <div class="card-columns">
         @foreach($movies as $movie)

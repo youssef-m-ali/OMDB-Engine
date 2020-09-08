@@ -11,11 +11,11 @@
             <input type="text" class="form-control" name="movieName" id="movieName" value="{{$movieName}}">
             <input type="hidden" id="page" name="page" value="1">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">Search OMDB</button>
+                    <button class="btn btn-outline-primary" type="submit">Search OMDb</button>
                 </div>
         </div>
     </form>
-    @if( $nominated == 5 )
+    @if( $nominated >= 5 )
     <div class="container text-center">
         <p class="alert alert-success ">
             You have already selected 5 Movies!

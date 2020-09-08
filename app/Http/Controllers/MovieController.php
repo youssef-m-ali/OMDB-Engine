@@ -41,8 +41,17 @@ class MovieController extends Controller
         $movie->imdbId = $id;
         $movie->save();
 
-        return redirect('/movies');
+        return redirect($_SERVER['HTTP_REFERER']);
 
+    }
+
+    public function reset(){
+        $user_id = 1;
+        $movies = Movie::where('user_id', $user_id)->get();
+        foreach($movies as $movie){
+            $movie->delete();
+        }
+        return redirect('/movies');
     }
     
     public function delete($id){

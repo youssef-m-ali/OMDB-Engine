@@ -3,7 +3,7 @@
 @section('content')
 <section class="jumbotron text-center bg-light">
     <div class="container">
-        <h1 class="jumbotron-heading display-4 ">Search OMDB Movies</h1>
+        <h1 class="jumbotron-heading display-4 ">Search OMDb Movies</h1>
         <p class="h2 lead text-muted">
             This Webpage enables you to make and share a list of your top 5 favourite movies. <br>
             You can view recent suggestions made by others as well.

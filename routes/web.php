@@ -17,6 +17,7 @@ Route::get('/','OmdbController@index');
 Route::get('/search','OmdbController@search');
 
 Route::get('/movies','MovieController@index');
+Route::get('/movies/reset','MovieController@reset');
 Route::get('/movies/{id}', 'MovieController@add');
 Route::delete('/movies/{id}', 'MovieController@delete');
 
