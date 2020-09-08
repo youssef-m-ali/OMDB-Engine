@@ -10,7 +10,7 @@ class MovieController extends Controller
     public function index(){
         $user_id = 1; // instead of implementing a log in and a foreign key relation
         $movies = Movie::where('user_id', $user_id)->get();
-        
+
         foreach($movies as $movie){
             $movie->omdbData = json_decode($movie->omdbData);
         }
@@ -21,6 +21,11 @@ class MovieController extends Controller
     }
 
     public function add($id){
+        $q = Movie::where('imdbId', $id)->get();
+        if(sizeof($q)){
+            session()->flash('error-message', 'Movie already added!');
+            return redirect($_SERVER['HTTP_REFERER']);
+        } 
 
         $url = 'http://www.omdbapi.com/?apikey=5bbe12ef&i=' . $id;
         

@@ -8,7 +8,7 @@
 <div class="container justify-content-center">
     <form method="GET" action="/search" class="py-2">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="movieName" id="movieName" value = {{$movieName}}>
+            <input type="text" class="form-control" name="movieName" id="movieName" value="{{$movieName}}">
             <input type="hidden" id="page" name="page" value="1">
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="submit">Search OMDB</button>
@@ -21,6 +21,15 @@
             You have already selected 5 Movies!
         </p>
     </div>
+    @endif
+    
+    @if(session()->has('error-message'))
+        <div class="container text-center">
+            <p class="alert alert-danger">
+            {{session()->get('error-message')}}
+            </p>
+            
+        </div>
     @endif
 
     @if($movies)
@@ -49,7 +58,7 @@
         @if(!$endOfResults)
             <form method="GET" action="/search" class="d-flex justify-center py-2">
                 <div class="input-group mb-3">
-                    <input type="hidden" name="movieName" id="movieName" value = {{$movieName}}>
+                    <input type="hidden" name="movieName" id="movieName" value ="{{$movieName}}">
                     <input type="hidden" id="page" name="page" value="{{$page+1}}">
                     <div class="pt-4">
                         <button class="btn btn-primary" type="submit">Load More</button>
@@ -62,7 +71,11 @@
         </div>
         @endif
     @else
-    not found
+    <div class="container text-center">
+        <p class="alert alert-secondary ">
+            Your search returned no results. Please Try a different name.
+        </p>
+    </div>
     @endif
     
 </div>
