@@ -31,7 +31,7 @@
     <div class="card-columns">
         @foreach($movies as $movie)
                 <div class="card">
-                    <img src={{$movie->omdbData->Poster}} onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
+                    <img src="{{$movie->omdbData->Poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
                         <p>{{$movie->omdbData->Title}} ({{$movie->omdbData->Year}})</p>
                         <div class="d-flex justify-content-between align-items-center">
@@ -50,7 +50,7 @@
 @else
 <div class="container text-center">
     <p class="alert alert-secondary ">
-        You have no selected movies at this time. click here to start your search
+        You have no selected movies at this time. click <a href="/" class="alert-link">here</a> to start your search
     </p>
 </div>
 @endif

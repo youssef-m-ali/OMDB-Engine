@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Movie Lists</title>
+        <title>OMDb Search Engine</title>
     </head>
 
     <body class="bg-light">
