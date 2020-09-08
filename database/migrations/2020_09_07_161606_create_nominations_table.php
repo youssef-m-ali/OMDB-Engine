@@ -17,7 +17,6 @@ class CreateNominationsTable extends Migration
             $table->id();
 						$table->json('movies')->nullable();
 						$table->bigInteger('user_id')->unsigned()->nullable()->default(1);
-            $table->string('uuid')->unique()->nullable();
 						$table->timestamps();
 
 						//$table->foreign('user_id')->references('id')->on('users');

@@ -21,5 +21,6 @@ Route::get('/movies/{id}', 'MovieController@add');
 Route::delete('/movies/{id}', 'MovieController@delete');
 
 Route::get('/nominations', 'NominationController@index');
-Route::get('/nominations/{id}', 'NominationController@add');
+Route::get('/nominations/add', 'NominationController@add');
+Route::get('/nominations/{id}', 'NominationController@show');
 Route::delete('/nominations/{id}', 'NominationController@delete');
