@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <p>{{$movie->Title}} - {{$movie->Year}}</p>
                         <div class="">
-                        <a href="https://www.imdb.com/title/{{$movie->imdbID}}" class="btn btn-primary">Chaeck on IMBd</a>
+                        <a href="https://www.imdb.com/title/{{$movie->imdbID}}" class="btn btn-primary">Check on IMBd</a>
                         
                         </div>
                     </div>
