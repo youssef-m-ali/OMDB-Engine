@@ -15,22 +15,30 @@ class CreateNominationsTable extends Migration
     {
         Schema::create('nominations', function (Blueprint $table) {
             $table->id();
-						$table->json('movies')->nullable();
             //$table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->bigInteger('user_id')->unsigned()->nullable()->default(1);
+            $table->bigInteger('user_id')->default(1);
 						$table->timestamps();
 
-				});
+        });
 
 				Schema::create('movies', function (Blueprint $table) {
 					$table->id();
           //$table->foreignId('user_id')->constrained()->onDelete('cascade');
-          $table->bigInteger('user_id')->unsigned()->nullable()->default(1);
-          $table->json('omdbData');
-          $table->string('imdbId');
+          $table->bigInteger('user_id')->default(1);
+          $table->string('imdbID');
+          $table->string('poster');
+          $table->string('year');
+          $table->string('title');
 					$table->timestamps();
 
-			});
+      });
+      
+      Schema::create('nomination_movie', function (Blueprint $table) {
+
+        $table->foreignId('nomination_id')->constrained()->onDelete('cascade');
+        $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+
+    });
     }
 
     /**
@@ -40,7 +48,9 @@ class CreateNominationsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('nomination_movie');
         Schema::dropIfExists('nominations');
         Schema::dropIfExists('movies');
+
     }
 }
