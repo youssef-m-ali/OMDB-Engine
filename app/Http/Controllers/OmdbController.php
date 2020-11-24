@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Movie;
+use App\Tempmov;
 use Illuminate\Http\Request;
 
 class OmdbController extends Controller
@@ -17,7 +17,7 @@ class OmdbController extends Controller
         $endOfResults = false;
 
         $user_id = 1;
-        $nominated = sizeof(Movie::where('user_id', $user_id)->get());
+        $nominated = sizeof(Tempmov::where('user_id', $user_id)->get());
 
 
         for ($p = 1; $p<=$request->page; $p++){
@@ -33,7 +33,7 @@ class OmdbController extends Controller
             if ($data->Response != "False"){
                 $movies = $data->Search;
                 foreach ($movies as $movie){
-                    $q = Movie::where('imdbId', $movie->imdbID)->get();
+                    $q = Tempmov::where('imdbId', $movie->imdbID)->get();
 
                     if(sizeof($q)){
                         $movie->selected = true;
