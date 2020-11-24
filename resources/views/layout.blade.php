@@ -12,12 +12,22 @@
 
     <body class="bg-light">
         <header>
-            <nav class="navbar navbar-dark bg-info py-3">
-            <a class="navbar-brand px-3" href="/"> EngineOMDb</a>
+            <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+            <div class="container">
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+
+
+            <a class="navbar-brand" href="/">Home</a>
                 <div class="float-right navbar ">
-                    <a class="navbar-brand px-3" href="/nominations">View Nominations</a>
-                    <a class="navbar-brand px-3" href="/movies">My movies</a>
+                    <a class="navbar-brand " href="/nominations">View Nominations</a>
+                    <a class="navbar-brand " href="/movies">My movies</a>
                     </div>
+                </div>
                 </div>
             </nav>
         </header>
@@ -26,7 +36,7 @@
             @yield('content')
         </main>
         <footer class="footer text-muted bg-dark py-5">
-            <div class="container">
+            <div class="">
                 <p class="text-white px-5">Youssef Ali 2020. All Rights Reserved</p>
                 <small class="text-white px-5">Developed With Love For Shopify</small>
             </div>
