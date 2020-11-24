@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Movie;
+use App\Tempmov;
 use Illuminate\Http\Request;
 
-class MovieController extends Controller
+class TempmovController extends Controller
 {
     public function index(){
         $user_id = 1; // instead of implementing a log in and a foreign key relation
 
-        $movies = Movie::where('user_id', $user_id)->get();
+        $movies = Tempmov::where('user_id', $user_id)->get();
         
         return view('movies',[
             'movies'=>$movies
@@ -18,7 +19,7 @@ class MovieController extends Controller
     }
 
     public function add($id){
-        $q = Movie::where('imdbId', $id)->get();
+        $q = Tempmov::where('imdbId', $id)->get();
 
         if(sizeof($q)){
             session()->flash('error-message', 'Movie already added!');
@@ -34,7 +35,7 @@ class MovieController extends Controller
         $data = json_decode(curl_exec($ch));
         curl_close($ch);
 
-        $movie = New Movie;
+        $movie = New Tempmov;
         $movie->imdbId = $id;
         $movie->title = $data->Title;
         $movie->year = $data->Year;
@@ -47,7 +48,7 @@ class MovieController extends Controller
 
     public function reset(){
         $user_id = 1;
-        $movies = Movie::where('user_id', $user_id)->get();
+        $movies = Tempmov::where('user_id', $user_id)->get();
         foreach($movies as $movie){
             $movie->delete();
         }
@@ -55,7 +56,7 @@ class MovieController extends Controller
     }
     
     public function delete($id){
-        $movie = Movie::where('imdbId', $id)->first();
+        $movie = Tempmov::where('imdbId', $id)->first();
         $movie->delete();
 
         return redirect('/movies');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Tempmov;
 use App\Nomination;
 
 class NominationController extends Controller
@@ -28,7 +29,7 @@ class NominationController extends Controller
 
     public function add(){
         $user_id = 1;
-        $movies = Movie::where('user_id', $user_id)->get();
+        $movies = Tempmov::where('user_id', $user_id)->get();
 
         if(sizeof($movies) < 5){
             session()->flash('error-message', 'You did not add enough movies!');
@@ -43,10 +44,20 @@ class NominationController extends Controller
         $nomination = new Nomination;
         $nomination->save();
 
+        foreach($movies as $movie){
+            $saved_movie = New Movie;
 
-        foreach($movies as $key=>$movie){
-            $nomination->movies()->attach($movie->id);
+            $saved_movie->imdbID = $movie->imdbID;
+            $saved_movie->title = $movie->title;
+            $saved_movie->year = $movie->year;
+            $saved_movie->poster = $movie->poster;
+            
+            $saved_movie->save();
+            $movie->delete();
+
+            $nomination->movies()->attach($saved_movie->id);
         }
+        
 
 
 

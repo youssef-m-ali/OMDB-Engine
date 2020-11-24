@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','OmdbController@index');
 Route::get('/search','OmdbController@search');
 
-Route::get('/movies','MovieController@index');
-Route::get('/movies/reset','MovieController@reset');
-Route::get('/movies/{id}', 'MovieController@add');
-Route::delete('/movies/{id}', 'MovieController@delete');
+Route::get('/movies','TempmovController@index');
+Route::get('/movies/reset','TempmovController@reset');
+Route::get('/movies/{id}', 'TempmovController@add');
+Route::delete('/movies/{id}', 'TempmovController@delete');
 
 Route::get('/nominations', 'NominationController@index');
 Route::get('/nominations/add', 'NominationController@add');
