@@ -37,7 +37,7 @@
         @foreach($movies as $movie)
             <div class="col-md-6 col-lg-3 py-2">
                 <div class="card">
-                    <img src={{$movie->Poster}} onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
+                    <img src="{{$movie->Poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
                     <p>{{$movie->Title}} ({{$movie->Year}})</p>
                         <div class="d-flex justify-content-between align-items-center">

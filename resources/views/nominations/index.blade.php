@@ -21,7 +21,7 @@
 <div class="container justify-content-center">
 
 <div class="row">
-        @foreach($nominations as $key=>$nomination)
+        @foreach($nominations as $nomination)
         <div class="col-md-12 col-lg-6 py-2">
                 <div class="card">
                     <div class="card-header h4">
@@ -32,7 +32,7 @@
 
                     @foreach($nomination->movies as $movie)
                         <li class="text-left">
-                        <a href="https://www.imdb.com/title/{{$movie->imdbID}}" class="text-dark">{{$movie->Title}} ({{$movie->Year}})</a>
+                        <a href="https://www.imdb.com/title/{{$movie->imdbID}}" class="text-dark">{{$movie->title}} ({{$movie->year}})</a>
                         </li>
                     @endforeach
                     </ul>

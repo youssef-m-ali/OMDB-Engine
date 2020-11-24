@@ -16,9 +16,9 @@
     <div class="card-columns">
         @foreach($nomination->movies as $movie)
                 <div class="card">
-                    <img src="{{$movie->Poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
+                    <img src="{{$movie->poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
-                        <p>{{$movie->Title}} - {{$movie->Year}}</p>
+                        <p>{{$movie->title}} - {{$movie->year}}</p>
                         <div class="">
                         <a href="https://www.imdb.com/title/{{$movie->imdbID}}" class="btn btn-primary">Check on IMBd</a>
                         

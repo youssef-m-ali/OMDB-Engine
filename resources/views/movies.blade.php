@@ -23,14 +23,14 @@
 
 @if(sizeof($movies))
 
-    @if(sizeof($movies)==5)
+    @if( sizeof($movies) == 5)
         <div class="container text-center">
             <p class="alert alert-success ">
                 You have selected 5 Movies. Time to share!
             </p>
         </div>
 
-    @elseif(sizeof($movies)>5)
+    @elseif( sizeof($movies) > 5)
         <div class="container text-center">
             <p class="alert alert-danger">
                 You have selected more than 5 movies. Remove excess movies to be able to share them!
@@ -38,20 +38,22 @@
         </div>
     @endif
     <div class="container py-3">
+        
     @if(sizeof($movies)==5)
     <a class="btn btn-success px-3" href="/nominations/add">Save List</a>
     @endif
+
     <a class="btn btn-secondary px-3" href="/movies/reset">Reset Selection</a>
     </div>
 
     <div class="card-columns">
         @foreach($movies as $movie)
                 <div class="card">
-                    <img src="{{$movie->omdbData->Poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
+                    <img src="{{$movie->poster}}" onerror="this.src='/images/fallback.png'" class="card-img-top img-fluid"/>
                     <div class="card-body">
-                        <p>{{$movie->omdbData->Title}} - {{$movie->omdbData->Year}}</p>
+                        <p>{{$movie->title}} - {{$movie->year}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <form method="POST" action="/movies/{{$movie->omdbData->imdbID}}">
+                            <form method="POST" action="/movies/{{$movie->imdbID}}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="btn-group">
