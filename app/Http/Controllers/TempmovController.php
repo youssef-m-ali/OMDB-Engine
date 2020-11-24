@@ -19,7 +19,7 @@ class TempmovController extends Controller
     }
 
     public function add($id){
-        $q = Tempmov::where('imdbId', $id)->get();
+        $q = Tempmov::where('imdbID', $id)->get();
 
         if(sizeof($q)){
             session()->flash('error-message', 'Movie already added!');
@@ -36,7 +36,7 @@ class TempmovController extends Controller
         curl_close($ch);
 
         $movie = New Tempmov;
-        $movie->imdbId = $id;
+        $movie->imdbID = $id;
         $movie->title = $data->Title;
         $movie->year = $data->Year;
         $movie->poster = $data->Poster;
@@ -56,7 +56,7 @@ class TempmovController extends Controller
     }
     
     public function delete($id){
-        $movie = Tempmov::where('imdbId', $id)->first();
+        $movie = Tempmov::where('imdbID', $id)->first();
         $movie->delete();
 
         return redirect('/movies');

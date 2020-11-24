@@ -33,7 +33,7 @@ class OmdbController extends Controller
             if ($data->Response != "False"){
                 $movies = $data->Search;
                 foreach ($movies as $movie){
-                    $q = Tempmov::where('imdbId', $movie->imdbID)->get();
+                    $q = Tempmov::where('imdbID', $movie->imdbID)->get();
 
                     if(sizeof($q)){
                         $movie->selected = true;
