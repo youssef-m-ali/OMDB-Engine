@@ -9,11 +9,8 @@ class MovieController extends Controller
 {
     public function index(){
         $user_id = 1; // instead of implementing a log in and a foreign key relation
-        $movies = Movie::where('user_id', $user_id)->get();
 
-        foreach($movies as $movie){
-            $movie->omdbData = json_decode($movie->omdbData);
-        }
+        $movies = Movie::where('user_id', $user_id)->get();
         
         return view('movies',[
             'movies'=>$movies
@@ -22,6 +19,7 @@ class MovieController extends Controller
 
     public function add($id){
         $q = Movie::where('imdbId', $id)->get();
+
         if(sizeof($q)){
             session()->flash('error-message', 'Movie already added!');
             return redirect($_SERVER['HTTP_REFERER']);
@@ -33,12 +31,14 @@ class MovieController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        $data = curl_exec($ch);
+        $data = json_decode(curl_exec($ch));
         curl_close($ch);
 
         $movie = New Movie;
-        $movie->omdbData = $data;
         $movie->imdbId = $id;
+        $movie->title = $data->Title;
+        $movie->year = $data->Year;
+        $movie->poster = $data->Poster;
         $movie->save();
 
         return redirect($_SERVER['HTTP_REFERER']);

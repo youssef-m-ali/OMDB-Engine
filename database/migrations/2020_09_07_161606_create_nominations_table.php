@@ -33,12 +33,12 @@ class CreateNominationsTable extends Migration
 
       });
       
-      Schema::create('nomination_movie', function (Blueprint $table) {
-
-        $table->foreignId('nomination_id')->constrained()->onDelete('cascade');
-        $table->foreignId('movie_id')->constrained()->onDelete('cascade');
-
-    });
+        Schema::create('movie_nomination', function (Blueprint $table) {
+          $table->id();
+          $table->foreignId('nomination_id')->constrained()->onDelete('cascade');
+          $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+					$table->timestamps();
+      });
     }
 
     /**
@@ -48,7 +48,7 @@ class CreateNominationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nomination_movie');
+        Schema::dropIfExists('movie_nomination');
         Schema::dropIfExists('nominations');
         Schema::dropIfExists('movies');
 
